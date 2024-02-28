@@ -16,11 +16,14 @@ function App() {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
 
+        {/* Dash Start */}
         <Route path="dash" element={<DashLayout />}>
           <Route index element={<Welcome />} />
+
           <Route path="notes">
             <Route index element={<NotesList />} />
           <Route/>
+          
           <Route path="users">
             <Route index element={<UsersList />} />
           </Route>

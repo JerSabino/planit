@@ -1,26 +1,39 @@
 import { Link } from 'react-router-dom'
+import { Button } from './ui/button'
 
 import React from 'react'
 
 const Home = () => {
   const content = (
-    <section>
+    <section 
+    className="flex items-center justify-center flex-col 
+                bg-gradient-to-t from-gray-900 via-gray-800 to-gray-900 
+                h-screen gap-10 dark">
       <header>
-        <h1 className="border-2 border-black text-center">Welcome to Planit</h1>
+        <h1 className="text-9xl text-white select-none">
+          PlanIt
+        </h1>
       </header>
-      <main>
-        <p>
-          Planit is a web application that allows you to plan your day out.
+      <main className="">
+        <span>
+          
+        </span>
+        <p className="text-white font-bold">
+          Make planning a piece of cake.
         </p>
+        {/*
         <address>
           Fake R. Name <br />
           123 Fake Street <br />
           Fake City, FS 12345 <br />
           <a href="tel:+15555555555">(555) 555-5555</a>
         </address>
+        */}
       </main>
       <footer>
-        <Link to="/login">Employee Login</Link>
+        <Button>
+          <Link to="/login">Employee Login</Link>
+        </Button>
       </footer>
     </section>
   )

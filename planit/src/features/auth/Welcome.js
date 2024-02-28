@@ -5,11 +5,21 @@ const Welcome = () => {
   const today = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'long' }).format(date);
 
   const content = (
-    <section>
-      <p>{today}</p>
-      <h1>Welcome!</h1>
-      <p><Link to="/dash/notes">View planIt notes</Link></p>
-      <p><Link to="/dash/users">View User Settings</Link></p>
+    <section className="flex flex-col text-white gap-4">
+      
+      <p className="text-gray-400">
+        {today}
+      </p>
+      <h1>
+        Welcome!
+      </h1>
+      <div>
+        <p><span>• </span><Link to="/dash/notes">View planIt notes</Link></p>
+        <p><span>• </span><Link to="/dash/users">View User Settings</Link></p>
+      </div>
+      <div className="min-h-full">
+
+      </div>
     </section>
   )
 
