@@ -19,8 +19,6 @@ import {
 const User = ({ userId }) => {
   const user = useSelector(state => selectUserById(state, userId))
 
-  console.log("hello", user)
-
   const navigate = useNavigate()
 
   if (user) {
