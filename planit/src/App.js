@@ -10,6 +10,7 @@ import EditUser from './features/users/EditUser'
 import NewUserForm from './features/users/NewUserForm'
 import EditNote from './features/notes/EditNote'
 import NewNote from './features/notes/NewNote'
+import Prefetch from './features/auth/Prefetch'
 
 import './App.css'
 
@@ -20,8 +21,9 @@ function App() {
         <Route index element={<Home />} />
         <Route path="login" element={<Login />} />
 
-        {/* Start Dash */}
-        <Route path="dash" element={<DashLayout />}>
+        <Route element={<Prefetch/>}>
+          {/* Start Dash */}
+          <Route path="dash" element={<DashLayout />}>
 
           <Route index element={<Welcome />} />
 
@@ -37,8 +39,9 @@ function App() {
             <Route path="new" element={<NewUserForm/>} />
           </Route>
 
+          </Route>
+          {/* End Dash */}
         </Route>
-        {/* End Dash */}
 
       </Route>
     </Routes>
