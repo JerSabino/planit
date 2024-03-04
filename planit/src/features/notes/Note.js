@@ -34,8 +34,8 @@ const Note = ({ noteId }) => {
       <TableRow>
         <TableCell className="text-white">
           {note.completed
-            ? <span>Completed</span>
-            : <span>Open</span>
+            ? <span className="text-green-500">Completed</span>
+            : <span className="text-yellow-200">Open</span>
           }
         </TableCell>
         <TableCell className="text-white">{created}</TableCell>

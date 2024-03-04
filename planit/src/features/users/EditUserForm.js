@@ -18,13 +18,7 @@ import {
 } from "../../components/ui/form"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../components/ui/select"
+import { Checkbox } from "../../components/ui/checkbox"
 
 const USER_REGEX = /^[A-z]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
@@ -92,11 +86,9 @@ const EditUserForm = ({ user }) => {
 
   const options = Object.values(ROLES).map(role => {
       return (
-          <SelectItem
-              key={role}
-              value={role}
-
-          > {role}</SelectItem >
+          <option key={role} value={role}> 
+            {role}
+          </option >
       )
   })
 
@@ -120,8 +112,8 @@ const EditUserForm = ({ user }) => {
 
       <Form onSubmit={e => e.preventDefault()}>
         <div>
-          <h2>Edit User</h2>
-          <div>
+          <h2 className="text-white">Edit User</h2>
+          <div className="flex gap-2">
             <Button
               title="Save"
               onClick={onSaveUserClicked}
@@ -138,60 +130,67 @@ const EditUserForm = ({ user }) => {
           </div>
         </div>
 
-        {/* Username */}
-        <Label htmlFor="username">
-          Username:<span>[3-20 letters]</span>
-        </Label>
-        <Input
-          id="username"
-          name="username"
-          type="text"
-          autoComplete="off"
-          value={username}
-          onChange={onUsernameChanged}
-        />
+        <div className="flex flex-col gap-3">
+          {/* Username */}
+          <div>
+            <Label htmlFor="username" className="text-white">
+              Username: <span>[3-20 letters]</span>
+            </Label>
+            <Input
+              id="username"
+              name="username"
+              type="text"
+              autoComplete="off"
+              value={username}
+              onChange={onUsernameChanged}
+            />
+          </div>
+          
+          <div>
+            {/* Password */}
+            <Label htmlFor="password" className="text-white">
+              Password: <span>[4-12 chars including special chars]</span>
+            </Label>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              value={password}
+              onChange={onPasswordChanged}
+            />
+          </div>
 
-        {/* Password */}
-        <Label htmlFor="password">
-          Password:<span>[4-12 chars including special chars]</span>
-        </Label>
-        <Input
-          id="password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={onPasswordChanged}
-        />
+          {/* User Active */}
+          <div className="flex gap-2">
+            <Label htmlFor="user-active" className="text-white">
+              ACTIVE:
+            </Label>
+            <Checkbox
+              id="user-active"
+              name="user-active"
+              checked={active}
+              onCheckedChange={onActiveChanged}
+            />
+          </div>
 
-        {/* User Active */}
-        <Label htmlFor="user-active">
-          ACTIVE:
-          <Input
-            id="user-active"
-            name="user-active"
-            type="checkbox"
-            checked={active}
-            onChange={onActiveChanged}
-          />
-        </Label>
-
-        {/* Roles */}
-        <Label htmlFor="roles">
-          ASSIGNED ROLES:
-        </Label>
-        <Select
-          id="roles"
-          name="roles"
-          className={`form__select ${validRolesClass}`}
-          multiple={true}
-          size="3"
-          value={roles}
-          onChange={onRolesChanged}
-        >
-          <SelectContent>
-            {options}
-          </SelectContent>
-        </Select>
+          {/* Roles */}
+          <div className="flex flex-col gap-2">  
+            <Label htmlFor="roles" className="text-white">
+              ASSIGNED ROLES:
+            </Label>
+            <select
+              id="roles"
+              name="roles"
+              className="border border-gray-300 rounded-md p-2 w-max"
+              multiple={true}
+              size="3"
+              value={roles}
+              onChange={onRolesChanged}
+            >
+              {options}
+            </select>
+          </div>
+        </div>
       </Form>
     </>
   )
