@@ -52,7 +52,7 @@ const Login = () => {
         } else if (err.status === 401) {
             setErrMsg('Unauthorized');
         } else {
-            setErrMsg(err.data?.message);
+            setErrMsg(err?.data?.message);
         }
         errRef.current.focus();
     }
@@ -74,8 +74,8 @@ const Login = () => {
         </h1>
       </header>
       <main>
+        <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>  
         <Form>
-          <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
 
           <Label htmlFor="username">
             Username:

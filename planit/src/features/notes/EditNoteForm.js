@@ -11,75 +11,91 @@ import { Label } from "../../components/ui/label"
 import { Checkbox } from "../../components/ui/checkbox"
 import { Textarea } from "../../components/ui/textarea"
 
+import useAuth from '../../hooks/useAuth'
+
 const EditNoteForm = ({ note, users }) => {
 
-    const [updateNote, {
-        isLoading,
-        isSuccess,
-        isError,
-        error
-    }] = useUpdateNoteMutation()
+  const {isManager, isAdmin} = useAuth()
 
-    const [deleteNote, {
-        isSuccess: isDelSuccess,
-        isError: isDelError,
-        error: delerror
-    }] = useDeleteNoteMutation()
+  const [updateNote, {
+      isLoading,
+      isSuccess,
+      isError,
+      error
+  }] = useUpdateNoteMutation()
 
-    const navigate = useNavigate()
+  const [deleteNote, {
+      isSuccess: isDelSuccess,
+      isError: isDelError,
+      error: delerror
+  }] = useDeleteNoteMutation()
 
-    const [title, setTitle] = useState(note.title)
-    const [text, setText] = useState(note.text)
-    const [completed, setCompleted] = useState(note.completed)
-    const [userId, setUserId] = useState(note.user)
+  const navigate = useNavigate()
 
-    useEffect(() => {
+  const [title, setTitle] = useState(note.title)
+  const [text, setText] = useState(note.text)
+  const [completed, setCompleted] = useState(note.completed)
+  const [userId, setUserId] = useState(note.user)
 
-        if (isSuccess || isDelSuccess) {
-            setTitle('')
-            setText('')
-            setUserId('')
-            navigate('/dash/notes')
-        }
+  useEffect(() => {
 
-    }, [isSuccess, isDelSuccess, navigate])
+      if (isSuccess || isDelSuccess) {
+          setTitle('')
+          setText('')
+          setUserId('')
+          navigate('/dash/notes')
+      }
 
-    const onTitleChanged = e => setTitle(e.target.value)
-    const onTextChanged = e => setText(e.target.value)
-    const onCompletedChanged = e => setCompleted(prev => !prev)
-    const onUserIdChanged = e => setUserId(e.target.value)
+  }, [isSuccess, isDelSuccess, navigate])
 
-    const canSave = [title, text, userId].every(Boolean) && !isLoading
+  const onTitleChanged = e => setTitle(e.target.value)
+  const onTextChanged = e => setText(e.target.value)
+  const onCompletedChanged = e => setCompleted(prev => !prev)
+  const onUserIdChanged = e => setUserId(e.target.value)
 
-    const onSaveNoteClicked = async (e) => {
-        if (canSave) {
-            await updateNote({ id: note.id, user: userId, title, text, completed })
-        }
-    }
+  const canSave = [title, text, userId].every(Boolean) && !isLoading
 
-    const onDeleteNoteClicked = async () => {
-        await deleteNote({ id: note.id })
-    }
+  const onSaveNoteClicked = async (e) => {
+      if (canSave) {
+          await updateNote({ id: note.id, user: userId, title, text, completed })
+      }
+  }
 
-    const created = new Date(note.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
-    const updated = new Date(note.updatedAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
+  const onDeleteNoteClicked = async () => {
+      await deleteNote({ id: note.id })
+  }
 
-    const options = users.map(user => {
-        return (
-            <option
-                key={user.id}
-                value={user.id}
-            > 
-              {user.username}
-            </option >
-        )
-    })
+  const created = new Date(note.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
+  const updated = new Date(note.updatedAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
 
-    const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
-    const validTitleClass = !title ? "form__input--incomplete" : ''
-    const validTextClass = !text ? "form__input--incomplete" : ''
+  const options = users.map(user => {
+      return (
+          <option
+              key={user.id}
+              value={user.id}
+          > 
+            {user.username}
+          </option >
+      )
+  })
 
-    const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
+  const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
+  const validTitleClass = !title ? "form__input--incomplete" : ''
+  const validTextClass = !text ? "form__input--incomplete" : ''
+
+  const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
+
+  let deleteButton = null
+  if (isManager || isAdmin) {
+    deleteButton = (
+      <Button
+        title="Delete"
+        onClick={onDeleteNoteClicked}
+      >
+        <FontAwesomeIcon icon={faTrashCan}/>
+      </Button>
+    )
+  }
 
   const content = (
     <>
@@ -97,12 +113,7 @@ const EditNoteForm = ({ note, users }) => {
               >
                 <FontAwesomeIcon icon={faSave}/>
               </Button>
-              <Button
-                title="Delete"
-                onClick={onDeleteNoteClicked}
-              >
-                <FontAwesomeIcon icon={faTrashCan}/>
-              </Button>
+              {deleteButton}
             </div>
           </div>
 

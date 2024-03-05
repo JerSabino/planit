@@ -49,7 +49,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 }
             }),
             invalidatesTags: (result, error, arg) => [
-                { type: 'User', id: 'arg.id'}
+                { type: 'User', id: arg.id}
             ]
         }),
         deleteUser: builder.mutation({
@@ -59,7 +59,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
                 body: { id }
             }),
             invalidatesTags: (result, error, arg) => [
-                { type: 'User', id: 'arg.id'}
+                { type: 'User', id: arg.id}
             ]
         })
     })
