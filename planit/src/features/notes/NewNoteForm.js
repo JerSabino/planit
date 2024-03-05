@@ -2,18 +2,10 @@ import { useState, useEffect } from 'react'
 import { useAddNewNoteMutation } from './notesApiSlice'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faSave } from '@fortawesome/free-solid-svg-icons'
 
 import { Button } from "../../components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../components/ui/form"
+import { Form } from "../../components/ui/form"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
 import { Checkbox } from "../../components/ui/checkbox"

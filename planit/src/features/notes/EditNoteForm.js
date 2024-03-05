@@ -5,15 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 import { Button } from "../../components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../components/ui/form"
+import { Form } from "../../components/ui/form"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
 import { Checkbox } from "../../components/ui/checkbox"
@@ -97,7 +89,7 @@ const EditNoteForm = ({ note, users }) => {
         <div className="flex flex-col gap-4">
           <div>
             <h2 className="text-white">Edit Note #{note.ticket}</h2>
-            <div>
+            <div className="flex gap-2">
               <Button
                 title="Save"
                 onClick={onSaveNoteClicked}
