@@ -5,10 +5,13 @@ import { useDispatch } from 'react-redux'
 import { setCredentials } from './authSlice' 
 import { useLoginMutation } from './authApiSlice'
 
+import usePersist from '../../hooks/usePersist'
+
 import { Form } from "../../components/ui/form"
 import { Label } from "../../components/ui/label"
 import { Input } from "../../components/ui/input"
 import { Button } from "../../components/ui/button"
+import { Checkbox } from "../../components/ui/checkbox"
 
 const Login = () => {
   
@@ -17,6 +20,7 @@ const Login = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errMsg, setErrMsg] = useState('')
+  const [persist, setPersist] = usePersist()
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -56,6 +60,7 @@ const Login = () => {
 
   const handleUserInput = (e) => setUsername(e.target.value)
   const handlePwdInput = (e) => setPassword(e.target.value)
+  const handleToggle = () => setPersist(prev => !prev)
 
   const errClass = errMsg ? "errmsg" : "offscreen"
 
@@ -98,6 +103,15 @@ const Login = () => {
           <Button onClick={handleSubmit}>
             Sign In
           </Button>
+
+          <Label htmlFor="persist">
+            Trust this Device
+          </Label>
+          <Checkbox
+            id="persist"
+            checked={persist}
+            onCheckedChange={handleToggle}
+          />  
         </Form>
       </main>
     </section>
