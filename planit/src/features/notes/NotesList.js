@@ -4,11 +4,11 @@ import {
   Table,
   TableBody,
   TableCaption,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "../../components/ui/table"
+import PulseLoader from 'react-spinners/PulseLoader'
 import useAuth from "../../hooks/useAuth"
 
 const NotesList = () => {
@@ -30,18 +30,14 @@ const NotesList = () => {
   let content
 
   if (isLoading){
-    console.log("loading")
-    content = <p>Loading</p>
+    content = <PulseLoader color={"#FFF"}/>
   } 
 
   if (isError) {
-    console.log("error")
     content = <p>{error?.data?.message}</p>
   }
 
   if (isSuccess) {
-    console.log("success")
-
     const {ids, entities} = notes 
 
     let filteredIds
@@ -54,31 +50,35 @@ const NotesList = () => {
     const tableContent = ids?.length && filteredIds.map(noteId => <Note key={noteId} noteId={noteId} />)
 
     content = (
-      <Table>
-        <TableCaption>A list of notes.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead>
-              Status
-            </TableHead>
-            <TableHead>
-              Created
-            </TableHead>
-            <TableHead>
-              Updated
-            </TableHead>
-            <TableHead>
-              Title
-            </TableHead>
-            <TableHead>
-              Owner
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {tableContent}
-        </TableBody>
-      </Table>
+      <div className="rounded-lg border border-gray-600 bg-gray-950">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className=" text-white">
+                Status
+              </TableHead>
+              <TableHead className=" text-white">
+                Created
+              </TableHead>
+              <TableHead className=" text-white">
+                Updated
+              </TableHead>
+              <TableHead className=" text-white">
+                Title
+              </TableHead>
+              <TableHead className=" text-white">
+                Owner
+              </TableHead>
+              <TableHead className="text-white text-center">
+                Edit
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {tableContent}
+          </TableBody>
+        </Table>
+      </div>
     )
   }
   return content

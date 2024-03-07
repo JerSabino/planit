@@ -10,7 +10,6 @@ import { Button } from "../../components/ui/button"
 import { Form } from "../../components/ui/form"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
-import { Select } from "../../components/ui/select"
 
 const USER_REGEX = /^[A-z]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/

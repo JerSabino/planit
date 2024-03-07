@@ -13,11 +13,14 @@ import NewNote from './features/notes/NewNote'
 import Prefetch from './features/auth/Prefetch'
 import PersistLogin from './features/auth/PersistLogin'
 import RequireAuth from './features/auth/RequireAuth'
+import useTitle from './hooks/useTitle'
 import { ROLES } from './config/roles'
 
 import './App.css'
 
 function App() {
+  useTitle('PlanIt')
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>

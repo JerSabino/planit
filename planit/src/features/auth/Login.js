@@ -7,6 +7,7 @@ import { useLoginMutation } from './authApiSlice'
 
 import usePersist from '../../hooks/usePersist'
 
+import PulseLoader from 'react-spinners/PulseLoader'
 import { Form } from "../../components/ui/form"
 import { Label } from "../../components/ui/label"
 import { Input } from "../../components/ui/input"
@@ -43,7 +44,6 @@ const Login = () => {
         setUsername('')
         setPassword('')
         navigate('/dash')
-        console.log("Logged in")
     } catch (err) {
         if (!err.status) {
             setErrMsg('No Server Response');
@@ -64,7 +64,7 @@ const Login = () => {
 
   const errClass = errMsg ? "errmsg" : "offscreen"
 
-  if (isLoading) return <p>Loading</p>
+  if (isLoading) return <PulseLoader color={"#FFF"}/>
 
   const content = (
     <section>
@@ -114,6 +114,9 @@ const Login = () => {
           />  
         </Form>
       </main>
+      <footer>
+        <Link to="/">Back to Home</Link>
+      </footer>
     </section>
   )
 

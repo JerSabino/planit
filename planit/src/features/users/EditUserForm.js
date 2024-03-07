@@ -7,15 +7,7 @@ import { ROLES } from '../../config/roles'
 
 // Form Imports
 import { Button } from "../../components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../../components/ui/form"
+import { Form } from "../../components/ui/form"
 import { Input } from "../../components/ui/input"
 import { Label } from "../../components/ui/label"
 import { Checkbox } from "../../components/ui/checkbox"
@@ -49,6 +41,10 @@ const EditUserForm = ({ user }) => {
   useEffect (() => {
     setValidUsername(USER_REGEX.test(username))
   }, [username])
+
+  useEffect (() => {
+    setValidPassword(PWD_REGEX.test(password))
+  }, [password])
 
   useEffect(() => {
     if (isSuccess || isDelSuccess) {

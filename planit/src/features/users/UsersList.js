@@ -4,11 +4,11 @@ import {
   Table,
   TableBody,
   TableCaption,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "../../components/ui/table"
+import PulseLoader from 'react-spinners/PulseLoader'
 
 const UsersList = () => {
   const {
@@ -26,42 +26,43 @@ const UsersList = () => {
   let content
 
   if (isLoading){
-    console.log("loading")
-    content = <p>Loading</p>
+    content = <PulseLoader color={"#FFF"}/>
   } 
 
   if (isError) {
-    console.log("error")
     content = <p>{error?.data?.message}</p>
   }
 
   if (isSuccess) {
-    console.log("success")
 
     const {ids} = users 
 
     const tableContent = ids?.length && ids.map(userId => <User key={userId} userId={userId} />)
 
     content = (
-      <Table>
-        <TableCaption>A list of users.</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead>
-              Username
-            </TableHead>
-            <TableHead>
-              Roles
-            </TableHead>
-            <TableHead>
-              Edit
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {tableContent}
-        </TableBody>
-      </Table>
+      <div className="rounded-lg border border-gray-600 bg-gray-950">
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className=" text-white">
+                Active
+              </TableHead>
+              <TableHead className=" text-white">
+                Username
+              </TableHead>
+              <TableHead className=" text-white">
+                Roles
+              </TableHead>
+              <TableHead className="text-white text-center">
+                Edit
+              </TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {tableContent}
+          </TableBody>
+        </Table>
+      </div>
     )
   }
   return content

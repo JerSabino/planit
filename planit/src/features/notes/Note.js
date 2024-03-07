@@ -2,23 +2,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
-import { selectNoteById } from "./notesApiSlice";
+import { useGetNotesQuery } from './notesApiSlice'
+import { memo } from "react"
 
 import { Button } from '../../components/ui/button'
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../../components/ui/table"
+import { TableCell, TableRow } from "../../components/ui/table"
 
 const Note = ({ noteId }) => {
 
-  const note = useSelector(state => selectNoteById(state, noteId))
+  const { note } = useGetNotesQuery("notesList", {
+    selectFromResult: ({ data }) => ({
+      note: data?.entities[noteId]
+    }),
+  })
 
   const navigate = useNavigate()
 
@@ -30,20 +26,23 @@ const Note = ({ noteId }) => {
 
     const handleEdit = () => navigate(`/dash/notes/${noteId}`)
 
+    const cellStatus = note.completed ? 'text-gray-700' : ''
+    const completedCell = note.completed ? 'bg-emerald-700' : 'bg-amber-700'
+    const completed = note.completed ? 'Completed' : 'Open'
+
     return (
       <TableRow>
         <TableCell className="text-white">
-          {note.completed
-            ? <span className="text-green-500">Completed</span>
-            : <span className="text-yellow-200">Open</span>
-          }
+          <div className={`rounded-lg w-min px-2 h-5 leading-5 text-center text-white font-semibold select-none ${completedCell}`}>
+            {completed}
+          </div>
         </TableCell>
-        <TableCell className="text-white">{created}</TableCell>
-        <TableCell className="text-white">{updated}</TableCell>
-        <TableCell className="text-white">{note.title}</TableCell>
-        <TableCell className="text-white">{note.username}</TableCell>
+        <TableCell className={`text-white ${cellStatus}`}>{created}</TableCell>
+        <TableCell className={`text-white ${cellStatus}`}>{updated}</TableCell>
+        <TableCell className={`text-white ${cellStatus}`}>{note.title}</TableCell>
+        <TableCell className={`text-white ${cellStatus}`}>{note.username}</TableCell>
   
-        <TableCell>
+        <TableCell className={`text-center`}>
           <Button onClick={handleEdit}>
             <FontAwesomeIcon icon={faPenToSquare}/>
           </Button>
@@ -54,4 +53,6 @@ const Note = ({ noteId }) => {
   } else return null
 }
 
-export default Note
+const memoizedNote = memo(Note)
+
+export default memoizedNote
