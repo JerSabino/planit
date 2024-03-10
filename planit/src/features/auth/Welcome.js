@@ -12,7 +12,7 @@ const Welcome = () => {
   const content = (
     <section className="flex flex-col text-white gap-4">
       
-      <p className="text-gray-400">
+      <p className="text-gray-400 italic text-sm">
         {today}
       </p>
       <h1>
@@ -21,8 +21,8 @@ const Welcome = () => {
       <div className="flex flex-col gap-4">
         <div>
           <Label>Notes</Label> 
-          <p><span>• </span><Link to="/dash/notes">View planIt notes</Link></p>
-          <p><span>• </span><Link to="/dash/notes/new">Add a new note</Link></p>
+          <p><span>• </span><Link to="/dash/notes">View tasks</Link></p>
+          <p><span>• </span><Link to="/dash/notes/new">Add a new task</Link></p>
         </div>
         {(isManager || isAdmin) &&
           <div>

@@ -28,8 +28,8 @@ const DashFooter = () => {
   const content = (
     <footer className="flex flex-nowrap gap-2 bg-slate-900 text-white sticky bottom-0 z-10 p-2 justify-between items-center">
       <div>
-        <p>Current user: {username}</p>
-        <p>Status: {status}</p>
+        <p className="font-bold text-sm">Current user: <span className="font-normal">{username}</span></p>
+        <p className="font-bold text-sm">Status: <span className="font-normal">{status}</span></p>
       </div>
       <div>
         {goHomeButton}

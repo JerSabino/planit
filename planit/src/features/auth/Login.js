@@ -66,7 +66,11 @@ const Login = () => {
 
   const errClass = errMsg ? "errmsg" : "offscreen"
 
-  if (isLoading) return <PulseLoader color={"#FFF"}/>
+  if (isLoading) return (
+    <div className="flex w-screen h-screen justify-center items-center bg-gray-950">
+      <PulseLoader color={"#FFF"}/>
+    </div>
+  ) 
 
   const content = (
     <section className="flex flex-col justify-center items-center h-screen bg-gray-950">
@@ -77,7 +81,7 @@ const Login = () => {
       </header>
       <div className="flex flex-col border gap-3 p-7 w-2/4 mt-1 mb-10 rounded-xl text-white">
         <Label ref={errRef} className="text-red-600" aria-live="assertive">{errMsg}</Label>  
-        <Form>
+        <form>
           <Label htmlFor="username">
             Username:
           </Label>
@@ -104,7 +108,7 @@ const Login = () => {
             required
           />
 
-          <div className="flex h-5 leading-5 items-center gap-2">
+          <div className="flex h-5 leading-5 items-center gap-2 mt-2">
             <Label htmlFor="persist">
               Trust this Device
             </Label>
@@ -116,10 +120,12 @@ const Login = () => {
             />  
           </div>
 
-          <Button onClick={handleSubmit}>
-            Sign In
-          </Button>
-        </Form>
+          <div className="mt-3 flex w-full justify-center">
+            <Button type="submit" onClick={handleSubmit}>
+              Sign In
+            </Button>
+          </div>
+        </form>
       </div>
       <footer className="text-white text-xs bottom-4">
         <Link to="/">Back to Home</Link>

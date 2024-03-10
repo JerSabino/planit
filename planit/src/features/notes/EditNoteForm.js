@@ -100,7 +100,7 @@ const EditNoteForm = ({ note, users }) => {
   const content = (
     <>
       <p className={errClass}>{errContent}</p>
-      <h2 className="text-white font-bold">Edit Note: <span className="font-thin">#{note.ticket}</span></h2>
+      <h2 className="text-white font-bold ml-2">Edit Note: <span className="font-thin">#{note.ticket}</span></h2>
       <Form>
         <div className="flex flex-col gap-4 border rounded-lg p-5">
           <div>
@@ -162,7 +162,7 @@ const EditNoteForm = ({ note, users }) => {
               <select
                 id="note-username"
                 name="username"
-                className="border border-gray-300 rounded-md p-1 w-max"
+                className="rounded-md p-1 w-[200px]"
                 value={userId}
                 onChange={onUserIdChanged}
               >

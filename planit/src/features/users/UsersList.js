@@ -26,7 +26,11 @@ const UsersList = () => {
   let content
 
   if (isLoading){
-    content = <PulseLoader color={"#FFF"}/>
+    content = (
+      <div className="flex w-screen h-screen justify-center items-center bg-gray-950">
+        <PulseLoader color={"#FFF"}/>
+      </div>
+    )
   } 
 
   if (isError) {

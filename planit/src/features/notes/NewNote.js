@@ -11,7 +11,11 @@ const NewNote = () => {
     }),
   })
 
-  if (!users?.length) return <PulseLoader color={"#FFF"}/>
+  if (!users?.length) return (
+    <div className="flex w-screen h-screen justify-center items-center bg-gray-950">
+      <PulseLoader color={"#FFF"}/>
+    </div>
+  )
 
   const content = <NewNoteForm users={users}/>
 

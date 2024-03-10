@@ -19,7 +19,7 @@ import { ROLES } from './config/roles'
 import './App.css'
 
 function App() {
-  useTitle('PlanIt')
+  useTitle('TaskIt - Make tasking a piece of cake')
 
   return (
     <Routes>

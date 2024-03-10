@@ -65,11 +65,10 @@ const NewNoteForm = ({ users }) => {
   const content = (
     <>
       <p className={errClass}>{error?.data?.message}</p>
-
+      <h2 className="text-white font-bold ml-2">New note</h2>
       <Form>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 border rounded-lg p-5">
           <div>
-            <h2 className="text-white">New note</h2>
             <div>
               <Button
                 title="Save"

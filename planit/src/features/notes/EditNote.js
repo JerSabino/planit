@@ -22,7 +22,11 @@ const EditNote = () => {
     }),
   })
 
-  if (!note || !users?.length) return <PulseLoader color={"#FFF"} />
+  if (!note || !users?.length) return (
+    <div className="flex w-screen h-screen justify-center items-center bg-gray-950">
+      <PulseLoader color={"#FFF"}/>
+    </div>
+  )
 
   if (!isManager && !isAdmin) {
       if (note.username !== username) {

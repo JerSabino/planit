@@ -107,8 +107,9 @@ const EditUserForm = ({ user }) => {
       <p>{errContent}</p>
 
       <Form onSubmit={e => e.preventDefault()}>
+        <h2 className="text-white font-bold ml-2">Edit User</h2>
+        <div className="flex flex-col gap-4 border rounded-lg p-5">
         <div>
-          <h2 className="text-white">Edit User</h2>
           <div className="flex gap-2">
             <Button
               title="Save"
@@ -178,7 +179,7 @@ const EditUserForm = ({ user }) => {
             <select
               id="roles"
               name="roles"
-              className="border border-gray-300 rounded-md p-2 w-max"
+              className="border border-gray-300 rounded-md p-2 w-[200px]"
               multiple={true}
               size="3"
               value={roles}
@@ -187,6 +188,7 @@ const EditUserForm = ({ user }) => {
               {options}
             </select>
           </div>
+        </div>
         </div>
       </Form>
     </>

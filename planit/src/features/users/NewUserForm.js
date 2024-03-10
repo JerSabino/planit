@@ -87,11 +87,10 @@ const NewUserForm = () => {
   const content = (
     <>
       <p>{error?.data?.message}</p>
-
+      <h2 className="text-white font-bold ml-2">New User</h2>
       <Form onSubmit={e => e.preventDefault()}>
-        <div className="flex flex-col gap-4">
-          <div>
-            <h2 className="text-white">New User</h2>
+        <div className="flex flex-col gap-4 border rounded-lg p-5">
+          <div className="flex flex-col gap-4">
             <div>
               <Button
                 title="Save"
@@ -101,55 +100,55 @@ const NewUserForm = () => {
                 <FontAwesomeIcon icon={faSave} />
               </Button>
             </div>
-          </div>
 
-          {/* Username */}
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="username" className="text-white">
-              Username: <span>[3-20 letters]</span>
-            </Label>
-            <Input
-              id="username"
-              name="username"
-              type="text"
-              autoComplete="off"
-              value={username}
-              onChange={onUsernameChanged}
-            />
-          </div>
+            {/* Username */}
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="username" className="text-white">
+                Username: <span>[3-20 letters]</span>
+              </Label>
+              <Input
+                id="username"
+                name="username"
+                type="text"
+                autoComplete="off"
+                value={username}
+                onChange={onUsernameChanged}
+              />
+            </div>
 
-          {/* Password */}
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="password" className="text-white">
-              Password: <span>[4-12 chars including special chars]</span>
-            </Label>
-            <Input
-              id="password"
-              name="password"
-              type="password"
-              value={password}
-              onChange={onPasswordChanged}
-            />
-          </div>
+            {/* Password */}
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="password" className="text-white">
+                Password: <span>[4-12 chars including special chars]</span>
+              </Label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                value={password}
+                onChange={onPasswordChanged}
+              />
+            </div>
 
-          {/* Roles */}
-          <div className="flex flex-col gap-2">
-            <Label htmlFor="roles" className="text-white"> 
-              ASSIGNED ROLES:
-            </Label>
-            <select 
-              id="roles"
-              name="roles"
-              multiple={true}
-              className="border border-gray-300 rounded-md p-1 w-max"
-              size="3"
-              value={roles}
-              onChange={onRolesChanged}
-            >
-              {options}
-            </select>
-          </div>
-        </div>   
+            {/* Roles */}
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="roles" className="text-white"> 
+                ASSIGNED ROLES:
+              </Label>
+              <select 
+                id="roles"
+                name="roles"
+                multiple={true}
+                className="border border-gray-300 rounded-md p-2 w-[200px]"
+                size="3"
+                value={roles}
+                onChange={onRolesChanged}
+              >
+                {options}
+              </select>
+            </div>
+          </div>   
+        </div>
       </Form>
     </>
   )

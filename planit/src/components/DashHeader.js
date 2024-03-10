@@ -130,7 +130,7 @@ const DashHeader = () => {
         <div className={`flex flex-nowrap justify-between items-center w-full`}>
           <Link to="/dash">
             <h1 className="text-white text-6xl flex-nowrap justify-end gap-2 align-middle">
-              Planit
+              TaskIt
             </h1>
           </Link>
           <nav>
