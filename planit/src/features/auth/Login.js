@@ -50,7 +50,9 @@ const Login = () => {
         } else if (err.status === 400) {
             setErrMsg('Missing Username or Password');
         } else if (err.status === 401) {
-            setErrMsg('Unauthorized');
+            setErrMsg('No such user exists');
+        } else if (err.status === 402) {
+            setErrMsg('Password is incorrect');
         } else {
             setErrMsg(err?.data?.message);
         }
@@ -67,20 +69,20 @@ const Login = () => {
   if (isLoading) return <PulseLoader color={"#FFF"}/>
 
   const content = (
-    <section>
+    <section className="flex flex-col justify-center items-center h-screen bg-gray-950">
       <header>
-        <h1>
+        <h1 className="text-white">
           Employee Login
         </h1>
       </header>
-      <main>
-        <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>  
+      <div className="flex flex-col border gap-3 p-7 w-2/4 rounded-xl text-white">
+        <Label ref={errRef} className="text-red-600" aria-live="assertive">{errMsg}</Label>  
         <Form>
-
           <Label htmlFor="username">
             Username:
           </Label>
           <Input
+            className="text-black"
             type="text"
             id="username"
             ref={userRef}
@@ -94,27 +96,31 @@ const Login = () => {
             Password:
           </Label>
           <Input
+            className="text-black"
             type="password"
             id="password"
             value={password}
             onChange={handlePwdInput}
             required
           />
+
+          <div className="flex h-5 leading-5 items-center gap-2">
+            <Label htmlFor="persist">
+              Trust this Device
+            </Label>
+            <Checkbox
+              id="persist"
+              checked={persist}
+              onCheckedChange={handleToggle}
+            />  
+          </div>
+
           <Button onClick={handleSubmit}>
             Sign In
           </Button>
-
-          <Label htmlFor="persist">
-            Trust this Device
-          </Label>
-          <Checkbox
-            id="persist"
-            checked={persist}
-            onCheckedChange={handleToggle}
-          />  
         </Form>
-      </main>
-      <footer>
+      </div>
+      <footer className="text-white bottom-4">
         <Link to="/">Back to Home</Link>
       </footer>
     </section>

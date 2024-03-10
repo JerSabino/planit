@@ -7,7 +7,7 @@ const Home = () => {
   const content = (
     <section 
     className="flex items-center justify-center flex-col 
-                bg-gradient-to-t from-gray-900 via-gray-800 to-gray-900 
+                bg-gradient-to-t from-gray-950 via-gray-900 to-gray-950 
                 h-screen gap-10 dark">
       <header>
         <h1 className="text-9xl text-white select-none">
@@ -31,7 +31,7 @@ const Home = () => {
         */}
       </main>
       <footer>
-        <Button>
+        <Button className="text-white bg-slate-800 hover:bg-gray-700">
           <Link to="/login">Employee Login</Link>
         </Button>
       </footer>
