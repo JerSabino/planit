@@ -164,6 +164,7 @@ const EditUserForm = ({ user }) => {
             <Checkbox
               id="user-active"
               name="user-active"
+              className="dark"
               checked={active}
               onCheckedChange={onActiveChanged}
             />

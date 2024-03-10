@@ -8,18 +8,15 @@ const Home = () => {
     <section 
     className="flex items-center justify-center flex-col 
                 bg-gradient-to-t from-gray-950 via-gray-900 to-gray-950 
-                h-screen gap-10 dark">
+                h-screen gap-10 dark text-center">
       <header>
         <h1 className="text-9xl text-white select-none">
-          PlanIt
+          TaskIt
         </h1>
       </header>
-      <main className="">
-        <span>
-          
-        </span>
+      <main>
         <p className="text-white font-bold">
-          Make planning a piece of cake.
+          Make tasking a piece of cake
         </p>
         {/*
         <address>

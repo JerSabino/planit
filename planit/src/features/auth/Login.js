@@ -71,11 +71,11 @@ const Login = () => {
   const content = (
     <section className="flex flex-col justify-center items-center h-screen bg-gray-950">
       <header>
-        <h1 className="text-white">
+        <h1 className="text-white font-bold">
           Employee Login
         </h1>
       </header>
-      <div className="flex flex-col border gap-3 p-7 w-2/4 rounded-xl text-white">
+      <div className="flex flex-col border gap-3 p-7 w-2/4 mt-1 mb-10 rounded-xl text-white">
         <Label ref={errRef} className="text-red-600" aria-live="assertive">{errMsg}</Label>  
         <Form>
           <Label htmlFor="username">
@@ -109,6 +109,7 @@ const Login = () => {
               Trust this Device
             </Label>
             <Checkbox
+              className="dark"
               id="persist"
               checked={persist}
               onCheckedChange={handleToggle}
@@ -120,7 +121,7 @@ const Login = () => {
           </Button>
         </Form>
       </div>
-      <footer className="text-white bottom-4">
+      <footer className="text-white text-xs bottom-4">
         <Link to="/">Back to Home</Link>
       </footer>
     </section>

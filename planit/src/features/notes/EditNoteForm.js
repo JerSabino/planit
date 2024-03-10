@@ -100,11 +100,10 @@ const EditNoteForm = ({ note, users }) => {
   const content = (
     <>
       <p className={errClass}>{errContent}</p>
-
+      <h2 className="text-white font-bold">Edit Note: <span className="font-thin">#{note.ticket}</span></h2>
       <Form>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 border rounded-lg p-5">
           <div>
-            <h2 className="text-white">Edit Note #{note.ticket}</h2>
             <div className="flex gap-2">
               <Button
                 title="Save"
@@ -151,6 +150,7 @@ const EditNoteForm = ({ note, users }) => {
               <Checkbox
                 id="note-completed"
                 name="completed"
+                className="dark"
                 checked={completed}
                 onCheckedChange={onCompletedChanged}
               />    
@@ -171,8 +171,8 @@ const EditNoteForm = ({ note, users }) => {
             </div>
             <div>
               <div>
-                <p className="text-white">Created: {created}</p>
-                <p className="text-white">Updated: {updated}</p>
+                <p className="text-white text-sm font-bold italic">Created: <span className="font-thin">{created}</span></p>
+                <p className="text-white text-sm font-bold italic">Updated: <span className="font-thin">{updated}</span></p>
               </div>
             </div>
           </div>
