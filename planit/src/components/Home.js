@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Button } from './ui/button'
+import Anim from './Anim'
 
 import React from 'react'
 
@@ -8,15 +9,18 @@ const Home = () => {
     <section 
     className="flex items-center justify-center flex-col 
                 bg-gradient-to-t from-gray-950 via-gray-900 to-gray-950 
-                h-screen gap-10 dark text-center">
+                h-screen w-screen gap-10 dark text-center">
       <header>
-        <h1 className="text-9xl text-white select-none">
+        <h1 className="text-9xl text-white select-none -mb-9">
           TaskIt
         </h1>
       </header>
       <main>
+        <div className="w-96 mb-5">
+          <Anim className="w-full h-full"/>
+        </div>
         <p className="text-white font-bold">
-          Make tasking a piece of cake
+          Task your team with ease
         </p>
         {/*
         <address>
