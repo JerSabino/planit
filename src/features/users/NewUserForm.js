@@ -86,7 +86,7 @@ const NewUserForm = () => {
 
   const content = (
     <>
-      <p>{error?.data?.message}</p>
+      <p className={errClass}>{error?.data?.message}</p>
       <h2 className="text-white font-bold ml-2">New User</h2>
       <Form onSubmit={e => e.preventDefault()}>
         <div className="flex flex-col gap-4 border rounded-lg p-5">

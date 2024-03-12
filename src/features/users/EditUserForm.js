@@ -104,7 +104,7 @@ const EditUserForm = ({ user }) => {
 
   const content = (
     <>
-      <p>{errContent}</p>
+      <p className={errClass}>{errContent}</p>
 
       <Form onSubmit={e => e.preventDefault()}>
         <h2 className="text-white font-bold ml-2">Edit User</h2>

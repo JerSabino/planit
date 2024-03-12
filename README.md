@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+<p style="text-align: center">
+  <img src="./src/assets/readme/logo.gif" style="text-align: center;"></img>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 style="text-align: center;">
+  A tasking webapp for your team
+</h3>
 
-## Available Scripts
+## About
 
-In the project directory, you can run:
+TaskIt is a fullstack web app that lets a team of people assign and create tasks for its members (employees). 
 
-### `npm start`
+![demo1](./src/assets/readme/demo.gif)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Features:
+- Roles and permissions (Administrator, Manager, Admin)
+- Login and Authentication
+- Creation, editing, and deletion of tasks
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Why I built this
 
-### `npm test`
+This project was a way for me to learn multiple technologies and frameworks at once. Completion of this project required me to create a backend repo for the API, that communicates with a database, and a frontend repo in which the user will be directly interacting with. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+It was also my first attempt in creating login authentication that has use of JSON Web Tokens for secure information transmission, and refresh tokens which allow the logged in user to obtain more access tokens without having to relogin everytime an access token expires. Thus the API will only be accessible to users whose accounts are in the database.
 
-### `npm run build`
+ On the frontend side, I also worked on adding features such as prefetching, to reduce load times when switching routes or fetching data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## How it's built
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+TaskIt uses ExpressJS and MongoDB for it's API, React JS, Tailwind for styling, and Shadcn UI components for the frontend. Additionally, it uses React Redux for routing and JWT Authentication for Login. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How to run locally
 
-### `npm run eject`
+***Prerequisites**: Running locally requires the [backend API](https://github.com/JerSabino/taskit-api) to be up and running.* 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Run `npm install` in the project directory to install all dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Once dependencies are installed, run the project with `npm start`, a page will open in your default browser
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## What's next for TaskIt
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+As of now, it's fully functional and I've reached a point in which I am satisfied with what I've learned and am ready to move to the next project. 
 
-## Learn More
+However if I were to continue adding features onto this, I do have a list of things I would like to one day implement in the future:
+- A revised dashboard
+  - Showing a summary of tasks (# of open and completed)
+    - For team and individual
+  - Notifications for any open assigned tasks
+  - A graph showing how number of completed tasks per day over the period of a week/month/year
+  - Better styling to fill up the negative space on the dash
+- Filtering on the table via the different headers (status, name, owner, date, etc..)
+- ComboBox to search by name on the 'assign to' select bar
+- Animated components!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contact 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you have any questions regarding this project, or how to run it, you can reach me via my email!
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Jeremiah Sabino - jer.lsabino@gmail.com 
