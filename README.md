@@ -10,6 +10,14 @@
 
 TaskIt is a fullstack web app that lets a team of people assign and create tasks for its members (employees). 
 
+A demo is live here: [TaskIt](https://taskit-bd9e.onrender.com/)
+
+You can login with these credentials to view and create tasks as an employee (access to users and task deletion is not allowed for employees):
+```
+username: Mark
+password: testing123!
+```
+
 ![demo1](./src/assets/readme/demo.gif)
 
 Features:
